@@ -20,19 +20,33 @@ A Model Context Protocol (MCP) server for interacting with Supabase databases. T
 
 1. Clone this repository:
    ```bash
-   git clone https://github.com/yourusername/supabase-mcp.git
+   git clone https://github.com/gevans3000/supabase-mcp.git
    cd supabase-mcp
    ```
 
-2. Install the dependencies:
+2. Set up a virtual environment (recommended):
+   ```bash
+   # Create a virtual environment
+   python -m venv venv
+   
+   # Activate the virtual environment
+   # On Windows:
+   venv\Scripts\activate
+   # On macOS/Linux:
+   source venv/bin/activate
+   ```
+
+3. Install the dependencies:
    ```bash
    pip install -r requirements.txt
    ```
 
-3. Set up environment variables:
+4. Set up environment variables:
    - Copy the `.env.example` file to `.env`:
      ```bash
      cp .env.example .env
+     # On Windows, use:
+     # copy .env.example .env
      ```
    - Fill in your Supabase URL and service role key in the `.env` file:
      ```
@@ -44,7 +58,7 @@ A Model Context Protocol (MCP) server for interacting with Supabase databases. T
 
 ### Starting the Server
 
-Run the server with the following command:
+Make sure your virtual environment is activated, then run the server:
 
 ```bash
 python server.py
