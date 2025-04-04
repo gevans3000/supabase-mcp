@@ -70,6 +70,56 @@ The server uses Stdio transport, so it will listen for MCP requests on standard 
 
 This server implements the Model Context Protocol and can be integrated with any MCP-compatible client. For example, you can use it with LLM frameworks that support MCP tools.
 
+#### Adding to Windsurf/Cursor MCP Configuration
+
+To add this MCP server to your Windsurf or Cursor configuration:
+
+1. Locate your `mcp_config.json` file:
+   - Windows: `C:\Users\<username>\.codeium\windsurf\mcp_config.json`
+   - macOS: `~/.codeium/windsurf/mcp_config.json`
+   - Linux: `~/.codeium/windsurf/mcp_config.json`
+
+2. Add the Supabase MCP server to the `mcpServers` section:
+
+```json
+{
+  "mcpServers": {
+    // ... other servers
+    "supabase": {
+      "command": "python",
+      "args": [
+        "/path/to/your/supabase-mcp/server.py"
+      ],
+      "env": {
+        "SUPABASE_URL": "your_supabase_url",
+        "SUPABASE_SERVICE_ROLE_KEY": "your_supabase_key"
+      }
+    }
+  }
+}
+```
+
+Replace `/path/to/your/supabase-mcp/server.py` with the absolute path to your server.py file.
+
+**Note**: For better isolation, you can use the Python executable from your virtual environment:
+
+```json
+{
+  "mcpServers": {
+    "supabase": {
+      "command": "/path/to/your/venv/bin/python",  // or "venv\\Scripts\\python.exe" on Windows
+      "args": [
+        "/path/to/your/supabase-mcp/server.py"
+      ]
+    }
+  }
+}
+```
+
+3. Restart your Windsurf/Cursor application to apply the changes.
+
+4. The Supabase MCP tools will now be available to your AI assistant.
+
 ### Tool Descriptions
 
 The server provides the following tools:
